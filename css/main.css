@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #dddd;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.timer {
+    font-family: sans-serif;
+    display: inline-block;
+    height: fit-content;
+    padding: 24px 32px;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.timer__part {
+    font-size: 3.8rem;
+    font-weight: bold;
+}
+
+.timer__btn{
+    width: 50px;
+    height: 50px;
+    margin-left: 16px;
+    border-radius: 50%;
+    border: 0;
+    color: white;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+.timer__btn--start {
+    background-color: rgb(166, 213, 214);
+}
+
+.timer__btn--stop {
+    background-color: rgb(240, 74, 129);
+}
+
+.timer__btn--reset {
+    background-color: rgb(85, 182, 184);
+}
