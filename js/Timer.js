@@ -12,7 +12,7 @@ export default class Timer {
 
         this.interval = null;
         this.running = false;
-        this.originalSeconds = 90;
+        this.originalSeconds = 0;
         this.remainingSeconds = this.originalSeconds
 
         this.updateInterfaceTime();
@@ -33,6 +33,7 @@ export default class Timer {
         });
         this.elements.set.addEventListener("click", () => {
             // TODO
+            this.select()
         });
     }
 
@@ -62,10 +63,10 @@ export default class Timer {
         this.interval = setInterval( () => {
             this.remainingSeconds--;
             this.updateInterfaceTime();
-        
-        if (this.remainingSeconds === 0) {
-            this.stop();
-        }
+            
+            if (this.remainingSeconds === 0) {
+                this.stop();
+            }
         }, 1000);
         this.updateInterfaceControls();
     }
@@ -76,6 +77,13 @@ export default class Timer {
         this.updateInterfaceControls();
     }
 
+    select() {
+        this.stop();
+        const workMinutes = prompt("Please, enter number of minutes:");
+        this.originalSeconds = workMinutes * 60;
+        this.reset();
+    }
+
     reset() {
         this.remainingSeconds = this.originalSeconds;
         this.updateInterfaceTime();
@@ -83,18 +91,22 @@ export default class Timer {
 
     static getHTML() {
         return `
-            <span class="timer__part timer__part--minutes">00</span>
-            <span class="timer__part">:</span>
-            <span class="timer__part timer__part--seconds">00</span>
-            <button type="button" class="timer__btn timer__part--control timer__btn--start">
-                <span class="material-icons">play_arrow</span>
-            </button>
-            <button type="button" class="timer__btn timer__btn--reset">
-                <span class="material-icons">refresh</span>
-            </button>
-            <button type="button" class="timer__btn timer__btn--set-time">
-                <span class="material-icons">timer</span>
-            </button>
+        <span class="timer__part timer__part--minutes">00</span>
+        <span class="timer__part">:</span>
+        <span class="timer__part timer__part--seconds">00</span>
+        <button type="button" class="timer__btn timer__part--control timer__btn--start">
+            <span class="material-icons">play_arrow</span>
+        </button>
+        <button type="button" class="timer__btn timer__btn--reset">
+            <span class="material-icons">refresh</span>
+        </button>
+        <button type="button" class="timer__btn timer__btn--set-time">
+            <span class="material-icons">timer</span>
+        </button>
+        <div class="timer__options hidden">
+            <input type="text">Hola</input>
+            <input type="text">Como ta</input>
+        </div>
         `;
     }
 }
